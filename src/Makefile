@@ -2,12 +2,12 @@
 # Defaults program to compile and run TrainSelector.java
 default: run
 
-#
-run: TrainSelector.class
-		java TrainSelector
+# Runs User interface
+run: UserInterface.java
+		java UserInterface
 
-TrainSelector.class: TrainSelector.java
-		javac TrainSelector.java
+TrainSelector.class: TrainSelector.java UserInterface.java RouteState.java
+		javac TrainSelector.java UserInterface.java RouteState.java
 
 
 # Compiles and runs all JUnit tests in routeTester.java
