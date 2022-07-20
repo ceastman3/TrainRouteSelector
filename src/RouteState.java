@@ -1,3 +1,4 @@
+import java.util.Locale;
 import java.util.Scanner;
 
 public enum RouteState {
@@ -80,26 +81,22 @@ public enum RouteState {
         public RouteState runState(Scanner scanner, TrainSelector graph) {
             boolean exists = false;
             System.out.println("Enter starting location:");
-            String start = scanner.nextLine().toUpperCase();
-
-            // Checks name in binary search tree if exists
-
-
-
-            if (!exists) {
-                System.out.println("Invalid City: Try again");
-                // TODO: Add option to list cities (Optional)
-                return FIND_ROUTE;
-            }
+            String start = scanner.nextLine().toLowerCase();
+//            if (!exists) {
+//                System.out.println("Invalid City: Try again");
+//                // TODO: Add option to list cities (Optional)
+//                return FIND_ROUTE;
+//            }
 
             System.out.println("Enter desired destination:");
-            String dest = scanner.nextLine().toUpperCase();
+            String dest = scanner.nextLine().toLowerCase();
 
+            System.out.println("Shortest Path has a distance of: " +
+                    graph.dijkstrasShortestPath(start, dest).distance +
+                    "km");
 
-
-            return DONE;
+            return MAIN_MENU;
         }
-
 
     },
 
@@ -116,7 +113,8 @@ public enum RouteState {
 
         public RouteState runState(Scanner scanner, TrainSelector graph) {
             // TODO: Have Cities to select from
-            return DONE;
+            System.out.println("COMING SOON!");
+            return MAIN_MENU;
         }
 
 
@@ -134,7 +132,8 @@ public enum RouteState {
 
         public RouteState runState(Scanner scanner, TrainSelector graph) {
             // TODO: List Cities
-            return DONE;
+            System.out.println("COMING SOON!");
+            return MAIN_MENU;
         }
 
     },
@@ -166,7 +165,7 @@ public enum RouteState {
      * queue, and returning the next state
      *
      * @param scanner scanner for user input
-     * @param queue   current Assignment queue
+     * @param graph   current graph
      * @return the next state of the AssignmentPlanner
      */
     public abstract RouteState runState(Scanner scanner, TrainSelector graph);

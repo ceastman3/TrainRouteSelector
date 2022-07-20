@@ -7,7 +7,16 @@ public class routeTester {
     // Checks to ensure that City shows corresponding data
     // when prompted
     @Test
-    public void cityInfoTester() {}
+    public void cityInfoTester() {
+        TrainSelector<City> nc = new TrainSelector<City>();
+
+        City Ancona = new City("And");
+        //System.out.println(Ancona.toString());
+        nc.insertVertex(Ancona);
+
+        nc.vertices.get(Ancona);
+
+    }
 
     // Checks correct paths are returned
     @Test

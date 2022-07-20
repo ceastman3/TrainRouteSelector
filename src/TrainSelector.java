@@ -14,6 +14,7 @@ public class TrainSelector<T> implements GraphADT<T> {
             this.data = data;
             this.edgesLeaving = new LinkedList<>();
         }
+
     }
 
     /**
@@ -105,6 +106,7 @@ public class TrainSelector<T> implements GraphADT<T> {
             }
         // otherwise add new edge to sourceVertex
         sourceVertex.edgesLeaving.add(new Edge(targetVertex,weight));
+        targetVertex.edgesLeaving.add(new Edge(sourceVertex,weight));
         return true;
     }
 
@@ -216,6 +218,7 @@ public class TrainSelector<T> implements GraphADT<T> {
         return vertices.size() == 0;
     }
 
+
     /**
      * Path objects store a discovered path of vertices and the overal distance of cost
      * of the weighted directed edges along this path. Path objects can be copied and extended
@@ -227,7 +230,7 @@ public class TrainSelector<T> implements GraphADT<T> {
     protected class Path implements Comparable<Path> {
         public Vertex start; // first vertex within path
         public int distance; // sumed weight of all edges in path
-        public List<T> dataSequence; // ordered sequence of data from vertices in path
+        public List dataSequence; // ordered sequence of data from vertices in path
         public Vertex end; // last vertex within path
 
         /**
@@ -260,6 +263,7 @@ public class TrainSelector<T> implements GraphADT<T> {
 //            newPath.dataSequence.add(extendBy.target.data);
 //            // insertEdge(newPath.end, extendBy.target, extendBy.weight);
 //            newPath.end = extendBy.target;
+
             this.start = copyPath.start;
             this.dataSequence = copyPath.dataSequence;
             this.distance = copyPath.distance + extendBy.weight;
@@ -299,60 +303,27 @@ public class TrainSelector<T> implements GraphADT<T> {
      *     including when no vertex containing start or end can be found
      */
     protected Path dijkstrasShortestPath(T start, T end) {
-        if (start == null || end == null) throw new NullPointerException("NullPointerException: Start or End is null");
         int numVtx = this.getVertexCount();
         int numEdges = this.getEdgeCount();
         if (numVtx == 0 || numEdges == 0) throw new NullPointerException("NullPointerException: This Graph has no vertices or edges");
+        if (start == null || end == null) throw new NullPointerException("NullPointerException: Start or End is null");
 
-        PriorityQueue<Path> pq = new PriorityQueue<Path>(numVtx);
+        PriorityQueue<Path> pq = new PriorityQueue<Path>();
 
 //        // List distance = new ArrayList(numEdges);
-        List<T> visited = new ArrayList<T>(numVtx);
+        Hashtable<T, Vertex> visited = new Hashtable<T, Vertex>();
         //List<T> unvisited = new ArrayList<T>(vertices.values());
 
         Vertex v1 = vertices.get(start);
 
         Path initPath = new Path(v1);
-        visited.add(start);
+        visited.put(start, v1);
 
-        for (int i=0; i<v1.edgesLeaving.size(); i++) {
-            pq.add(new Path(initPath, v1.edgesLeaving.get(i)));
+        for (T data : vertices.keySet()) {
+            for (Edge e : vertices.get(data).edgesLeaving) {
+                pq.add(new Path(initPath, e));
+            }
         }
-
-
-
-
-
-//            public Graph_pq(int V) {
-//            this.V = V;
-//            dist = new int[V];
-//            visited = new HashSet<Integer>();
-//            pqueue = new PriorityQueue<Node>(V, new Node());
-//        }
-//
-//        // Dijkstra's Algorithm implementation
-//        public void algo_dijkstra(List<List<Node> > adj_list, int src_vertex)
-//        {
-//            this.adj_list = adj_list;
-//
-//            for (int i = 0; i < V; i++)
-//                dist[i] = Integer.MAX_VALUE;
-//
-//            // first add source vertex to PriorityQueue
-//            pqueue.add(new Node(src_vertex, 0));
-//
-//            // Distance to the source from itself is 0
-//            dist[src_vertex] = 0;
-//            while (visited.size() != V) {
-//
-//                // u is removed from PriorityQueue and has min distance
-//                int u = pqueue.remove().node;
-//
-//                // add node to finalized list (visited)
-//                visited.add(u);
-//                graph_adjacentNodes(u);
-//            }
-//        }
 
 
 
@@ -389,5 +360,148 @@ public class TrainSelector<T> implements GraphADT<T> {
     public int getPathCost(T start, T end) {
         return dijkstrasShortestPath(start, end).distance;
     }
+
+    public TrainSelector<City> graphSetup() {
+        TrainSelector<City> cities = new TrainSelector<>();
+
+
+        // Creates City objects for each City
+        City Ancona = new City("Ancona");
+        City Balogna = new City("Balogna");
+        City Bari = new City("Bari");
+        City Bergamo = new City("Bergamo");
+        City Bolzano = new City("Bolzano");
+
+        City Caserta = new City("Caserta");
+        City Catanzaro = new City("Catanzaro");
+        City Cortina = new City("Cortina");
+        City Cremona = new City("Cremona");
+        City Florence = new City("Florence");
+
+        City Fiumicino = new City("Fiumicino");
+        City Foggia = new City("Foggia");
+        City Genova = new City("Genova");
+        City LaSpezia = new City("La Spezia");
+        City LamenziaTerme = new City("Lamenzia Terme");
+
+        City Lecce = new City("Lecce");
+        City Matera = new City("Matera");
+        City Milan = new City("Milan");
+        City Naples = new City("Naples");
+        City Padova = new City("Padova");
+
+        City Perugia = new City("Perugia");
+        City Pescara = new City("Pescara");
+        City Piacenza = new City("Piacenza");
+        City Pisa = new City("Pisa");
+        City Potenza = new City("Potenza");
+
+        City Ravenna = new City("Ravenna");
+        City ReggiodiCalabria = new City("Reggio di Calabria");
+        City Rome = new City("Rome");
+        City Salerno = new City("Salerno");
+        City Siena = new City("Siena");
+
+        City Taranto = new City("Taranto");
+        City Torino = new City("Torino");
+        City Trieste = new City("Trieste");
+        City Venice = new City("Venice");
+        City Verona = new City("Verona");
+
+        // Inserts Cities into graph
+        cities.insertVertex(Ancona);
+        cities.insertVertex(Balogna);
+        cities.insertVertex(Bari);
+        cities.insertVertex(Bergamo);
+        cities.insertVertex(Bolzano);
+
+        cities.insertVertex(Caserta);
+        cities.insertVertex(Catanzaro);
+        cities.insertVertex(Cortina);
+        cities.insertVertex(Cremona);
+        cities.insertVertex(Florence);
+
+        cities.insertVertex(Fiumicino);
+        cities.insertVertex(Foggia);
+        cities.insertVertex(Genova);
+        cities.insertVertex(LaSpezia);
+        cities.insertVertex(LamenziaTerme);
+
+        cities.insertVertex(Lecce);
+        cities.insertVertex(Matera);
+        cities.insertVertex(Milan);
+        cities.insertVertex(Naples);
+        cities.insertVertex(Padova);
+
+        cities.insertVertex(Perugia);
+        cities.insertVertex(Pescara);
+        cities.insertVertex(Piacenza);
+        cities.insertVertex(Pisa);
+        cities.insertVertex(Potenza);
+
+        cities.insertVertex(Ravenna);
+        cities.insertVertex(ReggiodiCalabria);
+        cities.insertVertex(Rome);
+        cities.insertVertex(Salerno);
+        cities.insertVertex(Siena);
+
+        cities.insertVertex(Taranto);
+        cities.insertVertex(Torino);
+        cities.insertVertex(Trieste);
+        cities.insertVertex(Venice);
+        cities.insertVertex(Verona);
+
+
+        cities.insertEdge(Torino, Milan, 141);
+        cities.insertEdge(Torino, Genova, 163);
+        cities.insertEdge(Milan, Genova, 141);
+        cities.insertEdge(Milan, Piacenza, 70);
+        cities.insertEdge(Milan, Cremona, 87);
+
+        cities.insertEdge(Cremona, Bergamo, 99);
+        cities.insertEdge(Cremona, Verona, 115);
+        cities.insertEdge(Verona, Bolzano, 146);
+        cities.insertEdge(Verona, Padova, 82);
+        cities.insertEdge(Verona, Balogna, 115);
+
+        cities.insertEdge(Padova, Balogna, 123);
+        cities.insertEdge(Padova, Venice, 37);
+        cities.insertEdge(Venice, Cortina, 168);
+        cities.insertEdge(Venice, Trieste, 153);
+        cities.insertEdge(Piacenza, Balogna, 147);
+
+        cities.insertEdge(Genova, LaSpezia, 84);
+        cities.insertEdge(Balogna, Florence, 91);
+        cities.insertEdge(Balogna, Ravenna, 82);
+        cities.insertEdge(LaSpezia, Pisa, 74);
+        cities.insertEdge(Florence, Pisa, 78);
+
+        cities.insertEdge(Florence, Siena, 93);
+        cities.insertEdge(Florence, Rome, 261);
+        cities.insertEdge(Florence, Perugia, 151);
+        cities.insertEdge(Ravenna, Ancona, 143);
+        cities.insertEdge(Ancona, Rome, 277);
+
+        cities.insertEdge(Rome, Fiumicino, 32);
+        cities.insertEdge(Ancona, Pescara, 146);
+        cities.insertEdge(Rome, Caserta, 198);
+        cities.insertEdge(Pescara, Foggia, 173);
+        cities.insertEdge(Caserta, Foggia, 158);
+
+        cities.insertEdge(Caserta, Naples, 34);
+        cities.insertEdge(Naples, Salerno, 51);
+        cities.insertEdge(Foggia, Bari, 122);
+        cities.insertEdge(Bari, Lecce, 149);
+        cities.insertEdge(Salerno, Potenza, 111);
+
+        cities.insertEdge(Potenza, Matera, 104);
+        cities.insertEdge(Potenza, Taranto, 151);
+        cities.insertEdge(Salerno, LamenziaTerme, 282);
+        cities.insertEdge(Catanzaro, LamenziaTerme, 27);
+        cities.insertEdge(ReggiodiCalabria, LamenziaTerme, 129);
+
+        return cities;
+    }
+
 
 }
