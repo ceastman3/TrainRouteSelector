@@ -1,3 +1,9 @@
+// --== CS400 File Header Information ==--
+// Name: Connor Eastman
+// Email: ceastman
+// Notes to Grader: <optional extra notes>
+
+import java.util.Enumeration;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -14,8 +20,8 @@ public enum RouteState {
 
         public RouteState runState(Scanner scanner, TrainSelector graph) {
             int num;
-            System.out.println("\n[1] Learn about a city");
-            System.out.println("[2] Find the Fastest Route between Cities");
+            System.out.println("\n[1] Find the Fastest Route between Cities");
+            //System.out.println("[2] Learn about a city");
             System.out.println("[0] Quit Program");
             String cmd = scanner.nextLine();
 
@@ -25,13 +31,12 @@ public enum RouteState {
                 System.out.println("Invalid command \"" + cmd + "\"");
                 return MAIN_MENU;
             }
-
             if (num == 1) {
-                return LEARN;
-            }
-            else if (num == 2) {
                 return FIND_ROUTE;
             }
+//            else if (num == 2) {
+//                return LEARN;
+//            }
             else if (num == 0) {
                 System.out.println("Ciao!");
                 return DONE;
@@ -60,6 +65,7 @@ public enum RouteState {
          * Does nothing, as the application has ended
          *
          * @param scanner scanner for user input
+         * @param graph   current graph
          * @return the next state of the AssignmentPlanner
          */
         public RouteState runState(Scanner scanner, TrainSelector graph) {
@@ -78,22 +84,43 @@ public enum RouteState {
             return false;
         }
 
+        /**
+         * This method takes a starting City and a destination City as
+         * input and then finds the shortest possible path between
+         * the cities using Dijkstra's shortest path algorithm
+         *
+         * @param scanner scanner for user input
+         * @param graph   current graph
+         * @return the shortest path between the two cities
+         */
         public RouteState runState(Scanner scanner, TrainSelector graph) {
-            boolean exists = false;
+            Enumeration e = graph.vertices.elements();
             System.out.println("Enter starting location:");
-            String start = scanner.nextLine().toLowerCase();
-//            if (!exists) {
-//                System.out.println("Invalid City: Try again");
-//                // TODO: Add option to list cities (Optional)
-//                return FIND_ROUTE;
+            //String s = new City(scanner.nextLine().toLowerCase().replaceAll("\\s", ""));
+            String s = scanner.nextLine().toLowerCase().replaceAll("\\s", "");
+
+
+//            for (int i=0; i< graph.getVertexCount(); i++) {
+//                if (c.compareTo(graph.get(i)));
 //            }
+
+
+            if (!graph.vertices.containsValue(s)) {
+                System.out.println("Invalid City: Try again");
+                return FIND_ROUTE;
+            }
 
             System.out.println("Enter desired destination:");
             String dest = scanner.nextLine().toLowerCase();
+            if (!graph.vertices.containsValue(dest)) {
+                System.out.println("Invalid City: Try again");
+                return FIND_ROUTE;
+            }
 
-            System.out.println("Shortest Path has a distance of: " +
-                    graph.dijkstrasShortestPath(start, dest).distance +
-                    "km");
+            System.out.println("Your shortest path is:");
+            //System.out.println(graph.dijkstrasShortestPath(graph.vertices.getValue(s), graph.vertices.get(dest)).toString());
+            System.out.println();
+
 
             return MAIN_MENU;
         }
@@ -117,40 +144,39 @@ public enum RouteState {
             return MAIN_MENU;
         }
 
+        //},
 
-    },
+//    CITIES {
+//        /**
+//         * Returns whether the state is DONE
+//         *
+//         * @return false
+//         */
+//        public boolean isDone() {
+//            return false;
+//        }
+//
+//        public RouteState runState(Scanner scanner, TrainSelector<T> graph, City c) {
+//            // TODO: List Cities
+//            System.out.println("COMING SOON!");
+//            return MAIN_MENU;
+//        }
+//
+//    },
 
-    CITIES {
-        /**
-         * Returns whether the state is DONE
-         *
-         * @return false
-         */
-        public boolean isDone() {
-            return false;
-        }
-
-        public RouteState runState(Scanner scanner, TrainSelector graph) {
-            // TODO: List Cities
-            System.out.println("COMING SOON!");
-            return MAIN_MENU;
-        }
-
-    },
-
-    CITY_TREE {
-        /**
-         * Returns whether the state is DONE
-         *
-         * @return false
-         */
-        public boolean isDone() {
-            return false;
-        }
-        public RouteState runState(Scanner scanner, TrainSelector graph) {
-            // TODO: Find City
-            return DONE;
-        }
+//    CITY_TREE {
+//        /**
+//         * Returns whether the state is DONE
+//         *
+//         * @return false
+//         */
+//        public boolean isDone() {
+//            return false;
+//        }
+//        public RouteState runState(Scanner scanner, TrainSelector<T> graph, City c) {
+//            // TODO: Find City
+//            return DONE;
+//        }
     };
 
     /**
