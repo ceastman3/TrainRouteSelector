@@ -59,9 +59,10 @@ public class UserInterface {
         RouteState state = RouteState.MAIN_MENU;
     //     Scanner scanner = new Scanner(System.in);
 
-        while (!state.isDone()) {
-            state = state.runState(scanner, graph);
-        }
+        System.out.println("Done!");
+        // while (!state.isDone()) {
+        //     state = state.runState(scanner, graph);
+        // }
 
     }
 

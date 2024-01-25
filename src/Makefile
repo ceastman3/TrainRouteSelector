@@ -2,11 +2,11 @@
 default: run
 
 # Runs User interface
-run: UserInterface.java
+run: TrainSelector.class
 		java UserInterface
 
-TrainSelector.class: TrainSelector.java UserInterface.java RouteState.java City.java
-		javac TrainSelector.java UserInterface.java RouteState.java City.java
+TrainSelector.class: TrainSelector.java UserInterface.java RouteState.java City.java GraphADT.java
+		javac TrainSelector.java UserInterface.java RouteState.java City.java GraphADT.java
 
 # Compiles and runs all JUnit tests in routeTester.java
 routeTester.class: TrainSelector.java routeTester.java

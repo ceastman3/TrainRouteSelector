@@ -113,7 +113,7 @@ public enum RouteState {
             }
 
             System.out.println("Your shortest path is:");
-            System.out.println("Just hop on a train and hope for the best! (Coming Soon)")
+            System.out.println("Just hop on a train and hope for the best! (Coming Soon)");
             //System.out.println(graph.dijkstrasShortestPath(graph.vertices.getValue(s), graph.vertices.get(dest)).toString());
             System.out.println();
 
@@ -173,14 +173,14 @@ public enum RouteState {
 //            // TODO: Find City
 //            return DONE;
 //        }
-    };
+    // };
 
     /**
      * Returns whether the state is DONE
      *
      * @return true if this assignment is DONE
      */
-    public abstract boolean isDone();
+    // public abstract boolean isDone();
 
     /**
      * Performs the behavior of this state by utilizing the values given by the scanner, updating the
@@ -190,7 +190,7 @@ public enum RouteState {
      * @param graph   current graph
      * @return the next state of the AssignmentPlanner
      */
-    public abstract RouteState runState(Scanner scanner, TrainSelector graph);
+    // public abstract RouteState runState(Scanner scanner, TrainSelector graph);
 
 
 }
