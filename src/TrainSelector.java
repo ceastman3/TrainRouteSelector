@@ -1,8 +1,3 @@
-// --== CS400 File Header Information ==--
-// Name: Connor Eastman
-// Email: ceastman
-// Notes to Grader: <optional extra notes>
-
 import java.util.*;
 
 public class TrainSelector<T> implements GraphADT<T> {
