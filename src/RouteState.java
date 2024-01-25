@@ -1,8 +1,3 @@
-// --== CS400 File Header Information ==--
-// Name: Connor Eastman
-// Email: ceastman
-// Notes to Grader: <optional extra notes>
-
 import java.util.Enumeration;
 import java.util.Locale;
 import java.util.Scanner;
@@ -97,7 +92,7 @@ public enum RouteState {
             Enumeration e = graph.vertices.elements();
             System.out.println("Enter starting location:");
             //String s = new City(scanner.nextLine().toLowerCase().replaceAll("\\s", ""));
-            String s = scanner.nextLine().toLowerCase().replaceAll("\\s", "");
+            String start = scanner.nextLine().toLowerCase().replaceAll("\\s", "");
 
 
 //            for (int i=0; i< graph.getVertexCount(); i++) {
@@ -105,7 +100,7 @@ public enum RouteState {
 //            }
 
 
-            if (!graph.vertices.containsValue(s)) {
+            if (!graph.vertices.containsValue(start)) {
                 System.out.println("Invalid City: Try again");
                 return FIND_ROUTE;
             }
@@ -118,6 +113,7 @@ public enum RouteState {
             }
 
             System.out.println("Your shortest path is:");
+            System.out.println("Just hop on a train and hope for the best! (Coming Soon)")
             //System.out.println(graph.dijkstrasShortestPath(graph.vertices.getValue(s), graph.vertices.get(dest)).toString());
             System.out.println();
 
@@ -128,21 +124,21 @@ public enum RouteState {
     },
 
 
-    LEARN {
-        /**
-         * Returns whether the state is DONE
-         *
-         * @return false
-         */
-        public boolean isDone() {
-            return false;
-        }
+    // LEARN {
+    //     /**
+    //      * Returns whether the state is DONE
+    //      *
+    //      * @return false
+    //      */
+    //     public boolean isDone() {
+    //         return false;
+    //     }
 
-        public RouteState runState(Scanner scanner, TrainSelector graph) {
-            // TODO: Have Cities to select from
-            System.out.println("COMING SOON!");
-            return MAIN_MENU;
-        }
+    //     public RouteState runState(Scanner scanner, TrainSelector graph) {
+    //         // TODO: Have Cities to select from
+    //         System.out.println("COMING SOON!");
+    //         return MAIN_MENU;
+    //     }
 
         //},
 

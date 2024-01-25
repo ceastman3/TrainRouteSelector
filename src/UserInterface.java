@@ -1,8 +1,3 @@
-// --== CS400 File Header Information ==--
-// Name: Connor Eastman
-// Email: ceastman
-// Notes to Grader: <optional extra notes>
-
 import java.awt.*;
 import java.io.FileInputStream;
 import java.util.Scanner;
@@ -20,26 +15,49 @@ public class UserInterface {
 
     };
 
-    private static final String WELCOME_MSG = "Welcome to the Italian Train Route Selector";
-    private static final String DESCRIPTION = "Pick any two Italian cities from the list below and the program will\n" +
-                                                "find the shortest way to get from one city to the other via major Italian train lines\n" +
-                                                "Below is the List of Cities you can choose from:";
+    // private static final String WELCOME_MSG = "|             Welcome to the Italian Train Route Selector                 |";
+    // private static final String DESCRIPTION = "Pick any two Italian cities from the list below and the program will find\n" +
+    //                                           "the shortest way to get from one city to the other via major Italian train\n" +
+    //                                           "lines. Below is the List of Cities you can choose from:";
 
 
     public static void main(String[] args) {
-        System.out.println(WELCOME_MSG);
-        System.out.println(DESCRIPTION);
+        System.out.println();
+        System.out.println("-----------------------------------------------------------------------------------------------");
+        System.out.println("|                         Welcome to the Italian Train Route Selector                         |");
+        System.out.println("-----------------------------------------------------------------------------------------------");
+        System.out.println();
+        System.out.println("    Pick any two Italian cities from the list below and the program will find the shortest\n" +
+                           "    way to get from one city to the other via major Italian train lines.");
+        System.out.println();
+        System.out.println("-----------------------------------------------------------------------------------------------");
+        System.out.println("Below is the List of Cities you can choose from:");
+        System.out.println();
 
-        for (String name : CITIES) {
-            System.out.println(name);
+
+        int rows = 7;
+        int columns = 5;
+        int cellWidth = 20; 
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                int index = i * columns + j;
+                if (index < CITIES.length) {
+                    System.out.print(String.format("%-" + cellWidth + "s", CITIES[index]));
+                } else {
+                    System.out.print(String.format("%-" + cellWidth + "s", ""));
+                }
+            }
+            System.out.println();
         }
+        System.out.println();
 
         TrainSelector<City> graph = new TrainSelector<City>();
         graph = graph.graphSetup();
 
 
         RouteState state = RouteState.MAIN_MENU;
-        Scanner scanner = new Scanner(System.in);
+    //     Scanner scanner = new Scanner(System.in);
 
         while (!state.isDone()) {
             state = state.runState(scanner, graph);

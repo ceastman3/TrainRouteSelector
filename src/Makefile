@@ -1,9 +1,3 @@
-# --== CS400 File Header Information ==--
-# Name: Connor Eastman
-# Email: ceastman
-# Notes to Grader: <optional extra notes>
-
-
 # Defaults program to compile and run TrainSelector.java
 default: run
 

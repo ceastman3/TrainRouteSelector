@@ -1,8 +1,3 @@
-// --== CS400 File Header Information ==--
-// Name: Connor Eastman
-// Email: ceastman
-// Notes to Grader: <optional extra notes>
-
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -210,7 +205,7 @@ public class routeTester {
     @Test
     public void pathConstructorTester() {
         TrainSelector<City> nc = new TrainSelector<City>();
-
+        System.out.println("Path Constructor Test");
     }
 
 

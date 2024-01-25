@@ -7,6 +7,15 @@ public class City implements Comparable<City> {
     //private static int idGenerator = 0;
     //public final int ID;
 
+    private static final String[] CITIES = {
+        "Ancona",    "Balogna",           "Bari",      "Bergamo",   "Bolzano",
+        "Caserta",   "Catanzaro",          "Cortina",  "Cremano",   "Florence",
+        "Fiumicino", "Foggia",             "Genova",   "La Spezia", "Lamenzia Terme",
+        "Lecce",     "Matera",             "Milan",    "Naples",    "Padova",
+        "Perugia",   "Pescara",            "Piacanza", "Pisa",      "Potenza",
+        "Ravenna",   "Reggio di Calabria", "Roma",     "Salerno",   "Siena",
+        "Taranto",   "Torino",             "Trieste",  "Venice",    "Verona"
+    };
 
     /**
      * Creates a new City with the given name, region, and population
@@ -100,48 +109,5 @@ public class City implements Comparable<City> {
                 "Population: " + this.Pop + "\n";
     }
 
-    private static final String[] CITIES = {
-            "Ancona",
-            "Balogna",
-            "Bari",
-            "Bergamo",
-            "Bolzano",
-
-            "Caserta",
-            "Catanzaro",
-            "Cortina",
-            "Cremano",
-            "Florence",
-
-            "Fiumicino",
-            "Foggia",
-            "Genova",
-            "La Spezia",
-            "Lamenzia Terme",
-
-            "Lecce",
-            "Matera",
-            "Milan",
-            "Naples",
-            "Padova",
-
-            "Perugia",
-            "Pescara",
-            "Piacanza",
-            "Pisa",
-            "Potenza",
-
-            "Ravenna",
-            "Reggio di Calabria",
-            "Roma",
-            "Salerno",
-            "Siena",
-
-            "Taranto",
-            "Torino",
-            "Trieste",
-            "Venice",
-            "Verona"
-    };
 
 }
