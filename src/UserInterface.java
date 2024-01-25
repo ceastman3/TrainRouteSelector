@@ -53,16 +53,46 @@ public class UserInterface {
         System.out.println();
 
         TrainSelector<City> graph = new TrainSelector<City>();
-        graph = graph.graphSetup();
+        try {
+            graph = graph.graphSetup();
+        }
+        catch (Exception e) {
+            System.out.println("Graph unsuccessfully made");
+        }
+
+        System.out.println();
+
+        
+        // RouteState state = RouteState.MAIN_MENU;
+
+        Scanner scanner = new Scanner(System.in);
+
+        // TODO (Optional): Get RouteState working
+        // RouteState state = new RouteState(scanner, graph);
+        // RouteState state = RouteState.MAIN_MENU.runState(scanner, graph);
+        // while (!state) {
+        //    state = state.MAIN_MENU.runState(scanner, graph);
+        // }
+
+        String start;
+        String dest;
+
+        System.out.println("Enter starting location:");
+        start = scanner.nextLine();
+        // start = scanner.nextLine().toLowerCase().replaceAll("\\s", "");
+
+        System.out.println("Starting Location: " + start);
+
+        System.out.println("Enter Destination:");
+        dest = scanner.nextLine();
+        // dest = scanner.nextLine().toLowerCase().replaceAll("\\s", "");
+        System.out.println("Destination: " + dest);
+
+        System.out.println();
 
 
-        RouteState state = RouteState.MAIN_MENU;
-    //     Scanner scanner = new Scanner(System.in);
 
         System.out.println("Done!");
-        // while (!state.isDone()) {
-        //     state = state.runState(scanner, graph);
-        // }
 
     }
 

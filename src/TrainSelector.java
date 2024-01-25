@@ -517,6 +517,9 @@ public class TrainSelector<T> implements GraphADT<T> {
         cities.insertEdge(catanzaro, lamenziaterme, 27);
         cities.insertEdge(reggiodicalabria, lamenziaterme, 129);
 
+        System.out.println("Graph setup complete");
+        System.out.println("Vertex count: " + cities.getVertexCount());
+        System.out.println("Edge count: " + cities.getEdgeCount());
 
         return cities;
     }

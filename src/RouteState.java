@@ -3,6 +3,13 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public enum RouteState {
+    // TrainSelector graph;
+
+    // public RouteState(TrainSelector graph) {
+    //     this.routes = graph;
+    // }
+
+
     MAIN_MENU {
         /**
          * Returns whether the state is DONE
@@ -13,6 +20,7 @@ public enum RouteState {
             return false;
         }
 
+        // public RouteState runState(Scanner scanner, TrainSelector graph) {
         public RouteState runState(Scanner scanner, TrainSelector graph) {
             int num;
             System.out.println("\n[1] Find the Fastest Route between Cities");
@@ -29,9 +37,9 @@ public enum RouteState {
             if (num == 1) {
                 return FIND_ROUTE;
             }
-//            else if (num == 2) {
-//                return LEARN;
-//            }
+    //            else if (num == 2) {
+    //                return LEARN;
+    //            }
             else if (num == 0) {
                 System.out.println("Ciao!");
                 return DONE;
