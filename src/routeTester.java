@@ -213,7 +213,9 @@ public class routeTester {
      * Checks if code handles invalid inputs correctly
      */
     @Test
-    public void invalidInputTester() {}
+    public void invalidInputTester() { 
+        // TODO: Implement tests
+    }
 
 
     /**
@@ -235,6 +237,8 @@ public class routeTester {
      * and prompts user
      */
     @Test
-    public void cityTrackerTester() {}
+    public void cityTrackerTester() {
+        // TODO: Implement tests
+    }
 
 }
