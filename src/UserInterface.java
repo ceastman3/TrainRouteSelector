@@ -1,5 +1,3 @@
-// import java.awt.*;
-// import java.io.FileInputStream;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -15,13 +13,15 @@ public class UserInterface {
 
     };
 
-    // private static final String WELCOME_MSG = "|             Welcome to the Italian Train Route Selector                 |";
-    // private static final String DESCRIPTION = "Pick any two Italian cities from the list below and the program will find\n" +
-    //                                           "the shortest way to get from one city to the other via major Italian train\n" +
-    //                                           "lines. Below is the List of Cities you can choose from:";
-
-
-
+    /**
+     * Prompts user to enter City name from list and 
+     * returns City data from graph
+     * 
+     * @param <T> Generic type parameter
+     * @param scnr Scanner to read input
+     * @param graph Graph of train network
+     * @return City object corresponding to input
+     */
     public static <T> City getNextCity(Scanner scnr, TrainSelector<T> graph) {
         String city_name;
         city_name = scnr.nextLine().toLowerCase().replaceAll("\\s", "");
@@ -33,6 +33,7 @@ public class UserInterface {
     }
 
     public static void main(String[] args) {
+        // Introduction message
         System.out.println();
         System.out.println("-----------------------------------------------------------------------------------------------");
         System.out.println("|                         Welcome to the Italian Train Route Selector                         |");
@@ -50,6 +51,7 @@ public class UserInterface {
         int columns = 5;
         int cellWidth = 20; 
 
+        // Aligns City names in Table format
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
                 int index = i * columns + j;
@@ -63,6 +65,7 @@ public class UserInterface {
         }
         System.out.println();
 
+        // Sets up Graph
         TrainSelector<City> graph = new TrainSelector<City>();
         try {
             graph = graph.graphSetup();
@@ -72,38 +75,24 @@ public class UserInterface {
         }
 
         System.out.println();
-
         Scanner scanner = new Scanner(System.in);
 
-        // TODO (Optional): Get RouteState working
-        // RouteState state = RouteState.MAIN_MENU;
-        // RouteState state = new RouteState(scanner, graph);
-        // RouteState state = RouteState.MAIN_MENU.runState(scanner, graph);
-        // while (!state) {
-        //    state = state.MAIN_MENU.runState(scanner, graph);
-        // }
-
-        City start;
-        City dest;
-
+        City start;    // Starting City
+        City dest;     // Destination City
 
         System.out.println("Enter starting location:");
-
-        // boolean valid = false;
         start = getNextCity(scanner, graph);
-        
+        // Checks if valid city
         while (start == null) {
-            System.out.println("Invalid City, please try again"); 
+            System.out.println("Invalid City, please try again:"); 
             start = getNextCity(scanner, graph);
         }
         System.out.println("Starting Location: " + start);
-        // valid = false;
     
         System.out.println("Enter Destination:");
-       
         dest = getNextCity(scanner, graph);
         while (dest == null) {
-            System.out.println("Invalid City, please try again"); 
+            System.out.println("Invalid City, please try again:"); 
             dest = getNextCity(scanner, graph);
         }
         System.out.println("Destination: " + dest);
@@ -115,8 +104,6 @@ public class UserInterface {
         System.out.println("Got Cities");
 
         int cost = graph.getPathCost(start, dest);
-
-
         System.out.println("The shortest path is:");
         System.out.println(graph.shortestPath(start, dest).toString());
         System.out.println("Total Distance: " + cost);

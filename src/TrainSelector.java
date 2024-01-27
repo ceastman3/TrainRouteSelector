@@ -294,6 +294,7 @@ public class TrainSelector<T> implements GraphADT<T> {
             return this.end.data.toString().compareTo(other.end.data.toString());
         }
 
+        @Override
         public String toString() {
             String path = "";
             int s = this.dataSequence.size() - 1;
@@ -314,7 +315,7 @@ public class TrainSelector<T> implements GraphADT<T> {
         for (Vertex v : graph.vertices.values()) {
             City othr = (City) v.data;
             if (city.compareTo(othr) == 0) {
-                System.out.println("City Name: " + city.getName());
+                // System.out.println("City Name: " + city.getName());
                 return (City) v.data;
             }
         }
@@ -550,10 +551,6 @@ public class TrainSelector<T> implements GraphADT<T> {
         cities.insertEdge(salerno, lamenziaterme, 282);
         cities.insertEdge(catanzaro, lamenziaterme, 27);
         cities.insertEdge(reggiodicalabria, lamenziaterme, 129);
-
-        System.out.println("Graph setup complete");
-        System.out.println("Vertex count: " + cities.getVertexCount());
-        System.out.println("Edge count: " + cities.getEdgeCount());
 
         return cities;
     }
