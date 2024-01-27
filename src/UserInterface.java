@@ -1,5 +1,5 @@
-import java.awt.*;
-import java.io.FileInputStream;
+// import java.awt.*;
+// import java.io.FileInputStream;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -20,6 +20,17 @@ public class UserInterface {
     //                                           "the shortest way to get from one city to the other via major Italian train\n" +
     //                                           "lines. Below is the List of Cities you can choose from:";
 
+
+
+    public static <T> City getNextCity(Scanner scnr, TrainSelector<T> graph) {
+        String city_name;
+        city_name = scnr.nextLine().toLowerCase().replaceAll("\\s", "");
+        city_name = city_name.substring(0, 1).toUpperCase() + city_name.substring(1);
+
+        City startCity = new City(city_name);
+        City s = graph.geCity(startCity, graph);
+        return s;
+    }
 
     public static void main(String[] args) {
         System.out.println();
@@ -62,34 +73,53 @@ public class UserInterface {
 
         System.out.println();
 
-        
-        // RouteState state = RouteState.MAIN_MENU;
-
         Scanner scanner = new Scanner(System.in);
 
         // TODO (Optional): Get RouteState working
+        // RouteState state = RouteState.MAIN_MENU;
         // RouteState state = new RouteState(scanner, graph);
         // RouteState state = RouteState.MAIN_MENU.runState(scanner, graph);
         // while (!state) {
         //    state = state.MAIN_MENU.runState(scanner, graph);
         // }
 
-        String start;
-        String dest;
+        City start;
+        City dest;
+
 
         System.out.println("Enter starting location:");
-        start = scanner.nextLine();
-        // start = scanner.nextLine().toLowerCase().replaceAll("\\s", "");
 
+        // boolean valid = false;
+        start = getNextCity(scanner, graph);
+        
+        while (start == null) {
+            System.out.println("Invalid City, please try again"); 
+            start = getNextCity(scanner, graph);
+        }
         System.out.println("Starting Location: " + start);
-
+        // valid = false;
+    
         System.out.println("Enter Destination:");
-        dest = scanner.nextLine();
-        // dest = scanner.nextLine().toLowerCase().replaceAll("\\s", "");
+       
+        dest = getNextCity(scanner, graph);
+        while (dest == null) {
+            System.out.println("Invalid City, please try again"); 
+            dest = getNextCity(scanner, graph);
+        }
         System.out.println("Destination: " + dest);
 
         System.out.println();
 
+        
+
+        System.out.println("Got Cities");
+
+        int cost = graph.getPathCost(start, dest);
+
+
+        System.out.println("The shortest path is:");
+        System.out.println(graph.shortestPath(start, dest).toString());
+        System.out.println("Total Distance: " + cost);
 
 
         System.out.println("Done!");

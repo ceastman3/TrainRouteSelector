@@ -253,23 +253,29 @@ public class TrainSelector<T> implements GraphADT<T> {
          * @param copyPath is the path that is being copied
          * @param extendBy is the edge the copied path is extended by
          */
-        public Path(Path copyPath, Edge extendBy) {
-            // TODO: Implement this constructor in Step 5.
-            //Path newPath = copyPath;
-//            Path newPath = new Path(copyPath.start);
-//            newPath.dataSequence = copyPath.dataSequence;
-//            newPath.distance = copyPath.distance + extendBy.weight;
-//            //newPath.end = copyPath.end;
-//            newPath.dataSequence.add(extendBy.target.data);
-//            // insertEdge(newPath.end, extendBy.target, extendBy.weight);
-//            newPath.end = extendBy.target;
-
+        public Path(Path copyPath) {
             this.start = copyPath.start;
-            this.dataSequence = copyPath.dataSequence;
-            this.distance = copyPath.distance + extendBy.weight;
-            this.dataSequence.add(extendBy.target.data);
-            this.end = extendBy.target;
+            this.distance = copyPath.distance;
+            this.end = copyPath.end;
+            this.dataSequence = new LinkedList<>();
 
+            Iterator<T> iter = copyPath.dataSequence.iterator();
+
+            while(iter.hasNext()) {
+                this.dataSequence.add(iter.next());
+            }
+
+        }
+
+        /**
+         * Extends the current path by a single edge and vertex.
+         * The distance, dataSequence, and end of this path are all updated as a result.
+         * @param edge is the directed edge that is being added to this path
+         */
+        public void extend(Edge edge) {
+          dataSequence.add(edge.target.data);
+          distance += edge.weight;
+          end = edge.target;
         }
 
         /**
@@ -304,9 +310,16 @@ public class TrainSelector<T> implements GraphADT<T> {
         }
     }
 
-
-
-
+    public City geCity(City city, TrainSelector<T> graph) {
+        for (Vertex v : graph.vertices.values()) {
+            City othr = (City) v.data;
+            if (city.compareTo(othr) == 0) {
+                System.out.println("City Name: " + city.getName());
+                return (City) v.data;
+            }
+        }
+        return null; // Returns null if City is not found
+    }
 
     /**
      * Uses Dijkstra's shortest path algorithm to find and return the shortest path
@@ -325,28 +338,49 @@ public class TrainSelector<T> implements GraphADT<T> {
         if (numVtx == 0 || numEdges == 0) throw new NullPointerException("NullPointerException: This Graph has no vertices or edges");
         if (start == null || end == null) throw new NullPointerException("NullPointerException: Start or End is null");
 
+        //List of explored nodes
+        LinkedList<Vertex> explored = new LinkedList<>();
+        //Priority Queue of of paths
         PriorityQueue<Path> pq = new PriorityQueue<Path>();
-
-//        // List distance = new ArrayList(numEdges);
-        Hashtable<T, Vertex> visited = new Hashtable<T, Vertex>();
-        //List<T> unvisited = new ArrayList<T>(vertices.values());
-
-        Vertex v1 = vertices.get(start);
-
-        Path initPath = new Path(v1);
-        visited.put(start, v1);
-
-        for (T data : vertices.keySet()) {
-            for (Edge e : vertices.get(data).edgesLeaving) {
-                pq.add(new Path(initPath, e));
+        
+        //begin by inserting start path to queue and add to explored
+        Path firstPath = new Path(vertices.get(start));
+        pq.add(firstPath);
+        explored.add(vertices.get(start));
+        
+        //while pq not empty, remove and look at at highest priority path
+        while(!pq.isEmpty()) {
+            Path currentPath = pq.remove();
+            
+            //if current path (highest priority) ends at target, return current path
+            if(currentPath.end.equals(vertices.get(end))) {
+                return currentPath;
+            }
+            
+            //for each unvisited successor of current vertex, loop through neighbors
+            for(Edge edge : currentPath.end.edgesLeaving) {
+                // See if neighbor visited
+                boolean isVisited = false;
+                for(Vertex vertex : explored) {
+                    if(edge.target == vertex) {
+                    isVisited = true;
+                    }
+                }
+                
+                // If vertex not visited, copy path and extend, then add to queue
+                if(!isVisited) {
+                    Path newPath = new Path(currentPath);
+                    newPath.extend(edge);
+                    pq.add(newPath);
+                    explored.add(edge.target);
+                }
             }
         }
-
-
-
-
-        return null; // TODO: Implement this method in Step 7.
+        
+        // No path found
+        throw new NoSuchElementException("No path exists"); 
     }
+
 
     /**
      * Returns the shortest path between start and end.
