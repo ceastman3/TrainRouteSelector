@@ -8,40 +8,41 @@ storage. City and Path objects are used to hold internal City info and path data
 
 
 List of Cities in Network:
-- "Ancona",
-- "Balogna",
-- "Bari",
-- "Bergamo",
-- "Bolzano",
-- "Caserta",
-- "Catanzaro",
-- "Cortina",
-- "Cremano",
-- "Florence",
-- "Fiumicino",
-- "Foggia",
-- "Genova",
-- "La Spezia",
-- "Lamenzia Terme", "Lecce",
-- "Matera",
-- "Milan",
-- "Naples",
-- "Padova",
-- "Perugia",
-- "Pescara",
-- "Piacanza",
-- "Pisa",
-- "Potenza",
-- "Ravenna",
-- "Reggio di Calabria",
-- "Roma",
-- "Salerno",
-- "Siena",
-- "Taranto",
-- "Torino",
-- "Trieste",
-- "Venice",
-- "Verona"
+- Ancona
+- Balogna
+- Bari
+- Bergamo
+- Bolzano
+- Caserta
+- Catanzaro
+- Cortina
+- Cremano
+- Florence
+- Fiumicino
+- Foggia
+- Genova
+- La Spezia
+- Lamenzia Terme
+- Lecce
+- Matera
+- Milan
+- Naples
+- Padova
+- Perugia
+- Pescara
+- Piacanza
+- Pisa
+- Potenza
+- Ravenna
+- Reggio di Calabria
+- Roma
+- Salerno
+- Siena
+- Taranto
+- Torino
+- Trieste
+- Venice
+- Verona
 
 
  
