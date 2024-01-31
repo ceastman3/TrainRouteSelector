@@ -42,8 +42,12 @@ List of Cities in Network:
 - "Trieste",
 - "Venice",
 - "Verona"
- 
 
-All rail connections/network and distances gathered on [rome2rio](https://www.rome2rio.com/)
-All City Region and population information gathered on [City Population](https://www.citypopulation.de/en/italy/)
+
+ 
+___
+
+All rail connections/network and distances gathered on [rome2rio](https://www.rome2rio.com/)  
+All City Region and population information gathered on [City Population](https://www.citypopulation.de/en/italy/)  
+___
 
