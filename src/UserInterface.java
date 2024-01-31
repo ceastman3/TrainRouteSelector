@@ -87,7 +87,6 @@ public class UserInterface {
             System.out.println("Invalid City, please try again:"); 
             start = getNextCity(scanner, graph);
         }
-        System.out.println("Starting Location: " + start);
     
         System.out.println("Enter Destination:");
         dest = getNextCity(scanner, graph);
@@ -95,21 +94,18 @@ public class UserInterface {
             System.out.println("Invalid City, please try again:"); 
             dest = getNextCity(scanner, graph);
         }
-        System.out.println("Destination: " + dest);
 
         System.out.println();
+        System.out.println("Starting Location: " + start.getName());
+        System.out.println("Destination: " + dest.getName());
+        System.out.println();
 
-        
-
-        System.out.println("Got Cities");
 
         int cost = graph.getPathCost(start, dest);
         System.out.println("The shortest path is:");
-        System.out.println(graph.shortestPath(start, dest).toString());
+        System.out.println(graph.getShortestPathString(start, dest));
+        System.out.println();
         System.out.println("Total Distance: " + cost);
-
-
-        System.out.println("Done!");
 
     }
 

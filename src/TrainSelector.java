@@ -294,19 +294,17 @@ public class TrainSelector<T> implements GraphADT<T> {
             return this.end.data.toString().compareTo(other.end.data.toString());
         }
 
-        @Override
         public String toString() {
             String path = "";
             int s = this.dataSequence.size() - 1;
             for (int i = 0; i < s; i++) {
-//                System.out.print(this.dataSequence.get(i));
-//                System.out.print(" -> ");
+                City n = (City) this.dataSequence.get(i);
 
-                path += this.dataSequence.get(i) + " -> ";
+                path += n.getName() + " -> ";
 
             }
-            // System.out.println(this.dataSequence.get(-1));
-            path += this.dataSequence.get(s);
+            City last = (City) this.dataSequence.get(s);
+            path += last.getName();
             return path;
         }
     }
@@ -315,7 +313,6 @@ public class TrainSelector<T> implements GraphADT<T> {
         for (Vertex v : graph.vertices.values()) {
             City othr = (City) v.data;
             if (city.compareTo(othr) == 0) {
-                // System.out.println("City Name: " + city.getName());
                 return (City) v.data;
             }
         }
@@ -327,6 +324,7 @@ public class TrainSelector<T> implements GraphADT<T> {
      * between two vertices in this graph: start and end. This path contains an ordered list
      * of the data within each node on this path, and also the distance or cost of all edges
      * that are a part of this path.
+     * 
      * @param start data item within first node in path
      * @param end data item within last node in path
      * @return the shortest path from start to end, as computed by Dijkstra's algorithm
@@ -339,41 +337,38 @@ public class TrainSelector<T> implements GraphADT<T> {
         if (numVtx == 0 || numEdges == 0) throw new NullPointerException("NullPointerException: This Graph has no vertices or edges");
         if (start == null || end == null) throw new NullPointerException("NullPointerException: Start or End is null");
 
-        //List of explored nodes
-        LinkedList<Vertex> explored = new LinkedList<>();
-        //Priority Queue of of paths
-        PriorityQueue<Path> pq = new PriorityQueue<Path>();
+        // Visited nodes
+        LinkedList<Vertex> visited = new LinkedList<>();
+        //Priority Queue of paths
+        PriorityQueue<Path> paths_pq = new PriorityQueue<Path>();
         
-        //begin by inserting start path to queue and add to explored
-        Path firstPath = new Path(vertices.get(start));
-        pq.add(firstPath);
-        explored.add(vertices.get(start));
+        Path first_Path = new Path(vertices.get(start));
+        paths_pq.add(first_Path);
+        visited.add(vertices.get(start));
         
         //while pq not empty, remove and look at at highest priority path
-        while(!pq.isEmpty()) {
-            Path currentPath = pq.remove();
+        while(!paths_pq.isEmpty()) {
+            Path currentPath = paths_pq.remove();
             
-            //if current path (highest priority) ends at target, return current path
+            // If current path ends at Target, return current path
             if(currentPath.end.equals(vertices.get(end))) {
                 return currentPath;
             }
-            
-            //for each unvisited successor of current vertex, loop through neighbors
+            // Loops through neighbors
             for(Edge edge : currentPath.end.edgesLeaving) {
                 // See if neighbor visited
                 boolean isVisited = false;
-                for(Vertex vertex : explored) {
+                for(Vertex vertex : visited) {
                     if(edge.target == vertex) {
                     isVisited = true;
                     }
                 }
-                
                 // If vertex not visited, copy path and extend, then add to queue
                 if(!isVisited) {
                     Path newPath = new Path(currentPath);
                     newPath.extend(edge);
-                    pq.add(newPath);
-                    explored.add(edge.target);
+                    paths_pq.add(newPath);
+                    visited.add(edge.target);
                 }
             }
         }
@@ -397,6 +392,24 @@ public class TrainSelector<T> implements GraphADT<T> {
     public List<T> shortestPath(T start, T end) {
         return dijkstrasShortestPath(start,end).dataSequence;
     }
+
+    /**
+     * Uses Dijkstras shortest path algorithm to find shortest path.
+     * Returns string representation of Path returned
+     * 
+     * @param start Starting data item in starting Vertex of path
+     * @param end Final data item in path
+     * @return String representaion of Cities in shortest path
+     */
+    public String getShortestPathString(T start, T end) {
+        String final_path = "";
+
+        Path short_path = dijkstrasShortestPath(start,end);
+        final_path = short_path.toString();
+
+        return final_path;
+    }
+
 
     /**
      * Returns the cost of the path (sum over edge weights) between start and end.
