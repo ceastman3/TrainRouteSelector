@@ -85,7 +85,7 @@ public class City implements Comparable<City> {
      *
      * @param o City being compared to
      * @return 0 if Names are the same
-     *         -1 if names are different
+     *         -1 if Names are different
      */
     @Override
     public int compareTo(City o) {
