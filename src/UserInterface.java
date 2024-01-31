@@ -82,6 +82,7 @@ public class UserInterface {
 
         System.out.println("Enter starting location:");
         start = getNextCity(scanner, graph);
+        
         // Checks if valid city
         while (start == null) {
             System.out.println("Invalid City, please try again:"); 

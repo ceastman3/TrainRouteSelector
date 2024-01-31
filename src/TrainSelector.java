@@ -185,7 +185,7 @@ public class TrainSelector<T> implements GraphADT<T> {
         for(Edge e : sourceVertex.edgesLeaving)
             if(e.target == targetVertex)
                 return e.weight;
-        throw new NoSuchElementException("No directed edge found between these vertices");
+        throw new NoSuchElementException("No edge found between these vertices");
     }
 
     /**

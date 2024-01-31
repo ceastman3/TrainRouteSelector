@@ -3,6 +3,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.Enumeration;
+import java.util.NoSuchElementException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -22,47 +23,47 @@ public class routeTester {
 
 
         // Creates City objects for each City
-        City ancona = new City("Ancona");
-        City bologna = new City("Bologna");
-        City bari = new City("Bari");
-        City bergamo = new City("Bergamo");
-        City bolzano = new City("Bolzano");
+        City ancona = new City("Ancona", "Marche", 473865);
+        City bologna = new City("Bologna", "Emilia-Romagna", 1011658);
+        City bari = new City("Bari", "Puglia", 1247303);
+        City bergamo = new City("Bergamo", "Lombardia", 1103768);
+        City bolzano = new City("Bolzano", "Trentino-Alto Adige", 533267);
 
-        City caserta = new City("Caserta");
-        City catanzaro = new City("Catanzaro");
-        City cortina = new City("Cortina");
-        City cremona = new City("Cremona");
-        City florence = new City("Florence");
+        City caserta = new City("Caserta", "Compania", 904921);
+        City catanzaro = new City("Catanzaro", "Calabria", 359841);
+        City cortina = new City("Cortina", "Veneto", 5546);
+        City cremona = new City("Cremona", "Lombardia", 357623);
+        City florence = new City("Florence", "Tuscany", 984991);
 
-        City fiumicino = new City("Fiumicino");
-        City foggia = new City("Foggia");
-        City genova = new City("Genova");
-        City laspezia = new City("La Spezia");
-        City lamenziaterme = new City("Lamenzia Terme");
+        City fiumicino = new City("Fiumicino", "Lazio", 81426);
+        City foggia = new City("Foggia", "Puglia", 626072);
+        City genova = new City("Genova", "Liguria", 855834);
+        City laspezia = new City("La Spezia", "Liguria", 219330);
+        City lamenziaterme = new City("Lamenzia Terme", "Calabria", 67026);
 
-        City lecce = new City("Lecce");
-        City matera = new City("Matera");
-        City milan = new City("Milan");
-        City naples = new City("Naples");
-        City padova = new City("Padova");
+        City lecce = new City("Lecce", "Puglia", 802018);
+        City matera = new City("Matera", "Basilicata", 200101);
+        City milan = new City("Milan", "Lombardia", 3219391);
+        City naples = new City("Naples", "Compania", 3054956);
+        City padova = new City("Padova", "Veneto", 928374);
 
-        City perugia = new City("Perugia");
-        City pescara = new City("Pescara");
-        City piacenza = new City("Piacenza");
-        City pisa = new City("Pisa");
-        City potenza = new City("Potenza");
+        City perugia = new City("Perugia", "Umbria", 655844);
+        City pescara = new City("Pescara", "Abruzzo", 314661);
+        City piacenza = new City("Piacenza", "Emilia-Romagna", 284616);
+        City pisa = new City("Pisa", "Tuscany", 416323);
+        City potenza = new City("Potenza", "Basilicata", 377935);
 
-        City ravenna = new City("Ravenna");
-        City reggiodicalabria = new City("Reggio di Calabria");
-        City rome = new City("Rome");
-        City salerno = new City("Salerno");
-        City siena = new City("Siena");
+        City ravenna = new City("Ravenna", "Emilia-Romagna", 155751);
+        City reggiodicalabria = new City("Reggio di Calabria", "Calabria", 550967);
+        City rome = new City("Rome", "Lazio", 4216553);
+        City salerno = new City("Salerno", "Compania", 134840);
+        City siena = new City("Siena", "Tuscany", 266621);
 
-        City taranto = new City("Taranto");
-        City torino = new City("Torino");
-        City trieste = new City("Trieste");
-        City venice = new City("Venice");
-        City verona = new City("Verona");
+        City taranto = new City("Taranto", "Puglia", 584649);
+        City torino = new City("Torino", "Piemonte", 2247780);
+        City trieste = new City("Trieste", "Friuli-Venezia Giulia", 232601);
+        City venice = new City("Venice", "Veneto", 846962);
+        City verona = new City("Verona", "Veneto", 923950);
 
         // Inserts Cities into graph
         cities.insertVertex(ancona);
@@ -161,8 +162,8 @@ public class routeTester {
 
 
     /**
-     * Checks to ensure that City shows corresponding data
-     *     // when prompted
+     * Checks to ensure that City shows 
+     * corresponding data when prompted
      */
     @Test
     public void cityTester() {
@@ -172,40 +173,55 @@ public class routeTester {
         City Rome = new City("Rome");
         City Florence = new City("Florence");
 
+        City lecce = new City("Lecce", "Puglia", 802018);
+        City matera = new City("Matera", "Basilicata", 200101);
+        City milan = new City("Milan", "Lombardia", 3219391);
+
         nc.insertVertex(Ancona);
         nc.insertVertex(Rome);
         nc.insertVertex(Florence);
+
+        nc.insertVertex(lecce);
+        nc.insertVertex(matera);
+        nc.insertVertex(milan);
 
         Assertions.assertTrue(nc.containsVertex(Ancona));
         Assertions.assertTrue(nc.containsVertex(Rome));
         Assertions.assertTrue(nc.containsVertex(Florence));
 
+        Assertions.assertTrue(nc.containsVertex(lecce));
+        Assertions.assertTrue(nc.containsVertex(matera));
+        Assertions.assertTrue(nc.containsVertex(milan));
+
         assertEquals("Ancona", Ancona.getName());
         assertEquals("Rome", Rome.getName());
         assertEquals("Florence", Florence.getName());
 
+        assertEquals("Lecce", lecce.getName());
+        assertEquals("Matera", matera.getName());
+        assertEquals("Milan", milan.getName());
+
+        assertEquals("Puglia", lecce.getRegion());
+        assertEquals("Basilicata", matera.getRegion());
+        assertEquals("Lombardia", milan.getRegion());
+
+        assertEquals(802018, lecce.getPop());
+        assertEquals(200101, matera.getPop());
+        assertEquals(3219391, milan.getPop());
+
     }
 
     /**
-     * Checks graph of Italy is properly setup
+     * Checks graph of Italy contains correct 
+     * number of nodes and edges
      */
     @Test
     public void graphSetupTester() {
-        //TrainSelector<City> nc = new TrainSelector<City>();
         TrainSelector<City> nc = graphSetup();
 
         assertEquals(35, nc.getVertexCount());
         assertEquals(80, nc.getEdgeCount());
 
-    }
-
-    /**
-     * Checks that paths are properly created
-     */
-    @Test
-    public void pathConstructorTester() {
-        TrainSelector<City> nc = new TrainSelector<City>();
-        System.out.println("Path Constructor Test");
     }
 
 
@@ -214,7 +230,29 @@ public class routeTester {
      */
     @Test
     public void invalidInputTester() { 
-        // TODO: Implement tests
+        TrainSelector<City> nc = graphSetup();
+        City n = new City("Start");
+        City d = new City("End");
+        City s = new City("Stop1");
+
+        nc.insertVertex(n);
+        // Checks when wanting to create edge to null vertex
+        Throwable e = assertThrows(IllegalArgumentException.class, ()-> { nc.insertEdge(n, d, 10); });
+        assertEquals("IllegalArgumentException: Cannot add edge with vertices that do not exist", e.getMessage());
+
+        nc.insertVertex(d);
+
+        // Checks negative weight
+        e = assertThrows(IllegalArgumentException.class, ()-> { nc.insertEdge(n, d, -5); });
+        assertEquals("IllegalArgumentException: Cannot add edge with negative weight", e.getMessage());
+
+        // Checks if s is detected as not in graph
+        assertThrows(IllegalArgumentException.class, ()-> { nc.removeEdge(n, s); });
+        assertThrows(IllegalArgumentException.class, ()-> { nc.getWeight(n, s); });
+
+        // Throws NoSuchElementException if no edge between nodes
+        assertThrows(NoSuchElementException.class, ()-> { nc.getWeight(n, d); });
+
     }
 
 
@@ -224,21 +262,37 @@ public class routeTester {
     @Test
     public void nullInputTester() {
         TrainSelector<City> nc = graphSetup();
-        City n = new City(null);
-        City d = new City(null);
+        City n = new City("Start");
+        City d = new City("End");
 
-        Throwable e = assertThrows(NullPointerException.class, ()-> {nc.dijkstrasShortestPath(n, d);} );
+        // Checks Vertex
+        assertThrows(NullPointerException.class, ()-> { nc.insertVertex(null); });
+        assertThrows(NullPointerException.class, ()-> { nc.removeVertex(null); });
+        
 
-        assertEquals("NullPointerException: Start or End is null", e.getMessage());
-    }
 
-    /**
-     * Checks if code properly recognizes if city has already been visited
-     * and prompts user
-     */
-    @Test
-    public void cityTrackerTester() {
-        // TODO: Implement tests
+        // Checks edges
+        assertThrows(NullPointerException.class, ()-> { nc.insertEdge(null, null, 10); });
+        assertThrows(NullPointerException.class, ()-> { nc.removeEdge(null, null); });
+        
+        // Contains Vertex or Edge
+        assertThrows(NullPointerException.class, ()-> { nc.containsEdge(null); });
+        assertThrows(NullPointerException.class, ()-> { nc.containsVertex(null); });
+        
+        
+        Throwable e = assertThrows(NullPointerException.class, ()-> { nc.dijkstrasShortestPath(n, d);} );
+        assertEquals("NullPointerException: This Graph has no vertices or edges", e.getMessage());
+
+        nc.insertVertex(n);
+        nc.insertVertex(d);
+
+        e = assertThrows(NullPointerException.class, ()-> { nc.dijkstrasShortestPath(n, d);} );
+        assertEquals("NullPointerException: This Graph has no vertices or edges", e.getMessage());
+
+        nc.insertEdge(n, d, 10);
+
+        assertThrows(NullPointerException.class, ()-> { nc.dijkstrasShortestPath(n, null);} );
+        
     }
 
 }
