@@ -432,94 +432,94 @@ public class TrainSelector<T> implements GraphADT<T> {
 
         // Creates City objects for each City
         City ancona = new City("Ancona", "Marche", 473865);
-        City bologna = new City("Bologna", "Emilia-Romagna", 1011658);
         City bari = new City("Bari", "Puglia", 1247303);
         City bergamo = new City("Bergamo", "Lombardia", 1103768);
+        City bologna = new City("Bologna", "Emilia-Romagna", 1011658);
         City bolzano = new City("Bolzano", "Trentino-Alto Adige", 533267);
 
         City caserta = new City("Caserta", "Compania", 904921);
         City catanzaro = new City("Catanzaro", "Calabria", 359841);
-        City cortina = new City("Cortina", "Veneto", 5546);
-        City cremona = new City("Cremona", "Lombardia", 357623);
+        City cortina = new City("Cortina d'Ampezzo", "Veneto", 5546);
         City florence = new City("Florence", "Tuscany", 984991);
-
         City fiumicino = new City("Fiumicino", "Lazio", 81426);
-        City foggia = new City("Foggia", "Puglia", 626072);
-        City genova = new City("Genova", "Liguria", 855834);
-        City laspezia = new City("La Spezia", "Liguria", 219330);
-        City lamenziaterme = new City("Lamenzia Terme", "Calabria", 67026);
 
+        City foggia = new City("Foggia", "Puglia", 626072);
+        City genoa = new City("Genoa", "Liguria", 855834);
+        City laspezia = new City("La Spezia", "Liguria", 219330);
+        City lameziaterme = new City("Lamezia Terme", "Calabria", 67026);
         City lecce = new City("Lecce", "Puglia", 802018);
+
         City matera = new City("Matera", "Basilicata", 200101);
         City milan = new City("Milan", "Lombardia", 3219391);
         City naples = new City("Naples", "Compania", 3054956);
         City padova = new City("Padova", "Veneto", 928374);
-
         City perugia = new City("Perugia", "Umbria", 655844);
+
         City pescara = new City("Pescara", "Abruzzo", 314661);
         City piacenza = new City("Piacenza", "Emilia-Romagna", 284616);
         City pisa = new City("Pisa", "Tuscany", 416323);
         City potenza = new City("Potenza", "Basilicata", 377935);
-
         City ravenna = new City("Ravenna", "Emilia-Romagna", 155751);
+
         City reggiodicalabria = new City("Reggio di Calabria", "Calabria", 550967);
         City rome = new City("Rome", "Lazio", 4216553);
         City salerno = new City("Salerno", "Compania", 134840);
+        City cremona = new City("San Giorgio a Cremona", "Lombardia", 357623);
         City siena = new City("Siena", "Tuscany", 266621);
 
         City taranto = new City("Taranto", "Puglia", 584649);
-        City torino = new City("Torino", "Piemonte", 2247780);
         City trieste = new City("Trieste", "Friuli-Venezia Giulia", 232601);
+        City turin = new City("Turin", "Piemonte", 2247780);
         City venice = new City("Venice", "Veneto", 846962);
         City verona = new City("Verona", "Veneto", 923950);
 
         // Inserts Cities into graph
         cities.insertVertex(ancona);
-        cities.insertVertex(bologna);
         cities.insertVertex(bari);
         cities.insertVertex(bergamo);
+        cities.insertVertex(bologna);
         cities.insertVertex(bolzano);
 
         cities.insertVertex(caserta);
         cities.insertVertex(catanzaro);
         cities.insertVertex(cortina);
-        cities.insertVertex(cremona);
+        cities.insertVertex(fiumicino);
         cities.insertVertex(florence);
 
-        cities.insertVertex(fiumicino);
         cities.insertVertex(foggia);
-        cities.insertVertex(genova);
+        cities.insertVertex(genoa);
         cities.insertVertex(laspezia);
-        cities.insertVertex(lamenziaterme);
-
+        cities.insertVertex(lameziaterme);
         cities.insertVertex(lecce);
+
         cities.insertVertex(matera);
         cities.insertVertex(milan);
         cities.insertVertex(naples);
         cities.insertVertex(padova);
-
         cities.insertVertex(perugia);
+
         cities.insertVertex(pescara);
         cities.insertVertex(piacenza);
         cities.insertVertex(pisa);
         cities.insertVertex(potenza);
-
         cities.insertVertex(ravenna);
+
         cities.insertVertex(reggiodicalabria);
         cities.insertVertex(rome);
         cities.insertVertex(salerno);
+        cities.insertVertex(cremona);
         cities.insertVertex(siena);
 
         cities.insertVertex(taranto);
-        cities.insertVertex(torino);
         cities.insertVertex(trieste);
+        cities.insertVertex(turin);
         cities.insertVertex(venice);
         cities.insertVertex(verona);
 
 
-        cities.insertEdge(torino, milan, 141);
-        cities.insertEdge(torino, genova, 163);
-        cities.insertEdge(milan, genova, 141);
+        cities.insertEdge(turin, milan, 141);
+        cities.insertEdge(turin, genoa, 163);
+        cities.insertEdge(milan, genoa, 141);
         cities.insertEdge(milan, piacenza, 70);
         cities.insertEdge(milan, cremona, 87);
 
@@ -535,7 +535,7 @@ public class TrainSelector<T> implements GraphADT<T> {
         cities.insertEdge(venice, trieste, 153);
         cities.insertEdge(piacenza, bologna, 147);
 
-        cities.insertEdge(genova, laspezia, 84);
+        cities.insertEdge(genoa, laspezia, 84);
         cities.insertEdge(bologna, florence, 91);
         cities.insertEdge(bologna, ravenna, 82);
         cities.insertEdge(laspezia, pisa, 74);
@@ -561,9 +561,9 @@ public class TrainSelector<T> implements GraphADT<T> {
 
         cities.insertEdge(potenza, matera, 104);
         cities.insertEdge(potenza, taranto, 151);
-        cities.insertEdge(salerno, lamenziaterme, 282);
-        cities.insertEdge(catanzaro, lamenziaterme, 27);
-        cities.insertEdge(reggiodicalabria, lamenziaterme, 129);
+        cities.insertEdge(salerno, lameziaterme, 282);
+        cities.insertEdge(catanzaro, lameziaterme, 27);
+        cities.insertEdge(reggiodicalabria, lameziaterme, 129);
 
         return cities;
     }

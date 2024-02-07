@@ -3,13 +3,13 @@ import java.util.Scanner;
 public class UserInterface {
 
     private static final String[] CITIES = {
-            "Ancona", "Balogna", "Bari", "Bergamo", "Bolzano",
-            "Caserta", "Catanzaro", "Cortina", "Cremano", "Florence",
-            "Fiumicino", "Foggia", "Genova", "La Spezia", "Lamenzia Terme",
-            "Lecce", "Matera", "Milan", "Naples", "Padova",
-            "Perugia", "Pescara", "Piacanza", "Pisa", "Potenza",
-            "Ravenna", "Reggio di Calabria", "Roma", "Salerno", "Siena",
-            "Taranto", "Torino", "Trieste", "Venice", "Verona"
+            "Ancona", "Bari", "Bergamo", "Balogna", "Bolzano",
+            "Caserta", "Catanzaro", "Cortina d'Ampezzo",  "Florence", "Fiumicino",
+            "Foggia", "Genoa", "La Spezia", "Lamezia Terme", "Lecce", 
+            "Matera", "Milan", "Naples", "Padova", "Perugia",
+            "Pescara", "Piacenza", "Pisa", "Potenza", "Ravenna", 
+            "Reggio di Calabria", "Rome", "Salerno", "San Giorgio a Cremano", "Siena",
+            "Taranto", "Trieste", "Turin", "Venice", "Verona"
 
     };
 
