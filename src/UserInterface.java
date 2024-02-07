@@ -24,8 +24,11 @@ public class UserInterface {
      */
     public static <T> City getNextCity(Scanner scnr, TrainSelector<T> graph) {
         String city_name;
-        city_name = scnr.nextLine().toLowerCase().replaceAll("\\s", "");
+        // city_name = scnr.nextLine().toLowerCase().replaceAll("\\s", "");
+        // System.out.println("City name:" + city_name);
+        city_name = scnr.nextLine();
         city_name = city_name.substring(0, 1).toUpperCase() + city_name.substring(1);
+        
 
         City startCity = new City(city_name);
         City s = graph.geCity(startCity, graph);
