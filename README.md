@@ -8,42 +8,16 @@ storage. City and Path objects are used to hold internal City info and path data
 
 ![Network Outline](./images/italy_train_network_outline.png)
 
-List of Cities in Network:
-- Ancona
-- Balogna
-- Bari
-- Bergamo
-- Bolzano
-- Caserta
-- Catanzaro
-- Cortina
-- Cremano
-- Florence
-- Fiumicino
-- Foggia
-- Genova
-- La Spezia
-- Lamenzia Terme
-- Lecce
-- Matera
-- Milan
-- Naples
-- Padova
-- Perugia
-- Pescara
-- Piacanza
-- Pisa
-- Potenza
-- Ravenna
-- Reggio di Calabria
-- Roma
-- Salerno
-- Siena
-- Taranto
-- Torino
-- Trieste
-- Venice
-- Verona
+#### List of Cities in Network:
+|                    |            |                    |                         |                |
+| ------------------ | ---------- | -------------------| ----------------------- | -------------- |
+| Ancona             | Bari       | Bergamo            | Bologna                 | Bolzano        |
+| Caserta            | Catanzaro  | Cortina d'Ampezzo  | Fiumicino               | Florence       |
+| Foggia             | Genoa      | La Spezia          | Lamezia Terme           | Lecce          |
+| Matera             | Milan      | Naples             | Padova                  | Perugia        |
+| Pescara            | Piacenza   | Pisa               | Potenza                 | Ravenna        |
+| Reggio di Calabria | Rome       | Solerno            | San Giorgio a Cremano   |  Siena         |
+| Taranto            | Trieste    | Turin              | Venice                  | Verona         |
 
 
  
