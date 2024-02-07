@@ -17,11 +17,15 @@ storage. City and Path objects are used to hold internal City info and path data
 | Reggio di Calabria | Rome       | Solerno            | San Giorgio a Cremano   |  Siena         |
 | Taranto            | Trieste    | Turin              | Venice                  | Verona         |
 
+
+#### Planning out Network
 ![Network Outline](./images/italy_train_network_outline.png) 
+
+
+#### Maps of Italy
 ![Network Outline](./images/italian_regions.png) ![Network Outline](./images/italian_cities.png) 
 
 
- 
 ___
 
 All rail connections/network and distances gathered on [rome2rio](https://www.rome2rio.com/)  
