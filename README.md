@@ -6,8 +6,6 @@ This OOP project recreates a network of 35 Italian cities which are connected by
 to find the shortest path between 2 user picked cities via rail network. The vertices for the graph are stored in a hashtable for efficient memory 
 storage. City and Path objects are used to hold internal City info and path data sequence information for ease of access. 
 
-![Network Outline](./images/italy_train_network_outline.png)
-
 #### List of Cities in Network:
 |                    |            |                    |                         |                |
 | ------------------ | ---------- | -------------------| ----------------------- | -------------- |
@@ -19,6 +17,7 @@ storage. City and Path objects are used to hold internal City info and path data
 | Reggio di Calabria | Rome       | Solerno            | San Giorgio a Cremano   |  Siena         |
 | Taranto            | Trieste    | Turin              | Venice                  | Verona         |
 
+![Network Outline](./images/italy_train_network_outline.png)
 
  
 ___

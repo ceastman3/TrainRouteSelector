@@ -1,0 +1,41 @@
+start,destination,weight
+Turin,Milan,141
+Turin,Genoa,163
+Milan,Genoa,141
+Milan,Piacenza,70
+Milan,San Giorgio a Cremona,87
+San Giorgio a Cremona,Bergamo,99
+San Giorgio a Cremona,Verona,115
+Verona,Bolzano,146
+Verona,Padova,82
+Verona,Vologna,115
+Padova,Bologna,123
+Padova,Venice,37
+Venice,Cortina d'Ampezzo,168
+Venice,Trieste,153
+Piacenza,Bologna,147
+Genoa,La Spezia, 84
+Bologna,Florence,91
+Bologna,Ravenna,82
+La Spezia,Pisa,74
+Florence,Pisa,78
+Florence,Siena,93
+Florence,Rome,261
+Florence,Perugia,151
+Ravenna,Ancona,143
+Ancona,Rome,277
+Rome,Fiumicino,32
+Ancona,Pescara,146
+Rome,Caserta,198
+Pescara,Foggia,173
+Caserta,Foggia,158
+Caserta,Naples,34
+Naples,Salerno,51
+Foggia,Bari,122
+Bari,Lecce,149
+Salerno,Potenza,111
+Potenza,Matera,104
+Potenza,Taranto,151
+Salerno,Lamezia Terme,282
+Catanzaro,Lamezia Terme,27
+Reggio di Calabria,Lamezia Terme,129

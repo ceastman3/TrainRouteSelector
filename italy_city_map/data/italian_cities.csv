@@ -1,0 +1,36 @@
+city,lat,lng,country,iso2,iso3,Region,population
+Ancona,43.6169,13.5167,Italy,IT,ITA,Marche,100924.0
+Bari,41.1253,16.8667,Italy,IT,ITA,Puglia,323370.0
+Bergamo,45.695,9.67,Italy,IT,ITA,Lombardy,120923.0
+Bologna,44.4939,11.3428,Italy,IT,ITA,Emilia-Romagna,392564.0
+Bolzano,46.4981,11.3548,Italy,IT,ITA,Trentino-Alto Adige,107317.0
+Caserta,41.0667,14.3333,Italy,IT,ITA,Campania,75561.0
+Catanzaro,38.9,16.6,Italy,IT,ITA,Calabria,89718.0
+Cortina d'Ampezzo,46.5405,12.1257,Italy,IT,ITA,,5546.0
+Fiumicino,41.7667,12.2333,Italy,IT,ITA,Lazio,79630.0
+Florence,43.7714,11.2542,Italy,IT,ITA,Tuscany,380948.0
+Foggia,41.4642,15.5461,Italy,IT,ITA,Puglia,151372.0
+Genoa,44.4111,8.9328,Italy,IT,ITA,Liguria,580097.0
+La Spezia,44.1,9.8167,Italy,IT,ITA,Liguria,93311.0
+Lamezia Terme,38.9667,16.2999,Italy,IT,ITA,,67026.0
+Lecce,40.35,18.1667,Italy,IT,ITA,Puglia,95441.0
+Matera,40.6667,16.6,Italy,IT,ITA,Basilicata,60403.0
+Milan,45.4669,9.19,Italy,IT,ITA,Lombardy,1366180.0
+Naples,40.8333,14.25,Italy,IT,ITA,Campania,966144.0
+Padova,45.4064,11.8778,Italy,IT,ITA,Veneto,210440.0
+Perugia,43.1122,12.3889,Italy,IT,ITA,Umbria,165683.0
+Pescara,42.4643,14.2142,Italy,IT,ITA,Abruzzo,119217.0
+Piacenza,45.05,9.7,Italy,IT,ITA,Emilia-Romagna,103082.0
+Pisa,43.7167,10.4,Italy,IT,ITA,Tuscany,90118.0
+Potenza,40.6333,15.8,Italy,IT,ITA,Basilicata,67211.0
+Ravenna,44.4161,12.2017,Italy,IT,ITA,Emilia-Romagna,159115.0
+Reggio di Calabria,38.1144,15.65,Italy,IT,ITA,Calabria,181447.0
+Rome,41.8931,12.4828,Italy,IT,ITA,Lazio,2872800.0
+Salerno,40.6806,14.7597,Italy,IT,ITA,Campania,133970.0
+San Giorgio a Cremano,40.8333,14.3333,Italy,IT,ITA,Campania,45122.0
+Siena,43.3183,11.3314,Italy,IT,ITA,Tuscany,53901.0
+Taranto,40.4711,17.2431,Italy,IT,ITA,Puglia,198283.0
+Trieste,45.6503,13.7703,Italy,IT,ITA,Friuli Venezia Giulia,204338.0
+Turin,45.0792,7.6761,Italy,IT,ITA,Piedmont,870952.0
+Venice,45.4397,12.3319,Italy,IT,ITA,Veneto,261321.0
+Verona,45.4386,10.9928,Italy,IT,ITA,Veneto,257275.0
