@@ -29,8 +29,8 @@ storage. City and Path objects are used to hold internal City info and path data
 ___
 
 All rail connections/network and distances gathered on [rome2rio](https://www.rome2rio.com/)  
-All City Region and population information gathered on [City Population](https://www.citypopulation.de/en/italy/)
-City Location and Map data gathered from [Simple Maps](https://simplemaps.com/data/it-cities) 
-Geojson files downloaded from [www.cartographyvectors.com](https://cartographyvectors.com/map/1458-italy-with-regions) 
+All City Region and population information gathered on [City Population](https://www.citypopulation.de/en/italy/)  
+City Location and Map data gathered from [Simple Maps](https://simplemaps.com/data/it-cities)  
+Geojson files downloaded from [www.cartographyvectors.com](https://cartographyvectors.com/map/1458-italy-with-regions)   
 ___
 
