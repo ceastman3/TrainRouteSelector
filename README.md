@@ -18,7 +18,7 @@ storage. City and Path objects are used to hold internal City info and path data
 | Taranto      | Trieste             | Turin              | Venice     | Verona         |
 
 
-#### Map of Italy
+#### Map of Cities
 ![Network Outline](./images/italian_cities.png) 
 
 #### Planning out Network
