@@ -1,4 +1,7 @@
 import java.util.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class TrainSelector<T> implements GraphADT<T> {
 
@@ -190,6 +193,9 @@ public class TrainSelector<T> implements GraphADT<T> {
 
     /**
      * Return the number of edges in the graph.
+     * Graph inserts directional paths in both 
+     * directions so counts as one bidirectional
+     * edge
      *
      * @return the number of edges in the graph
      */
@@ -197,7 +203,7 @@ public class TrainSelector<T> implements GraphADT<T> {
         int edgeCount = 0;
         for(Vertex v : vertices.values())
             edgeCount += v.edgesLeaving.size();
-        return edgeCount;
+        return edgeCount / 2;
     }
 
     /**
@@ -309,7 +315,7 @@ public class TrainSelector<T> implements GraphADT<T> {
         }
     }
 
-    public City geCity(City city, TrainSelector<T> graph) {
+    public City getCity(City city, TrainSelector<T> graph) {
         for (Vertex v : graph.vertices.values()) {
             City othr = (City) v.data;
             if (city.compareTo(othr) == 0) {
@@ -426,144 +432,66 @@ public class TrainSelector<T> implements GraphADT<T> {
         return dijkstrasShortestPath(start, end).distance;
     }
 
+    public static TrainSelector<City> collectRailroads(TrainSelector<City> graph) {
+        String file_path = "../data/railroads.csv";
+        String line = "";
+
+        try (BufferedReader br = new BufferedReader(new FileReader(file_path))) {
+            br.readLine();
+            while ((line = br.readLine()) != null) {
+                String[] railData = line.split(",");
+                
+                City start = new City(railData[0]);
+                start = graph.getCity(start, graph);
+
+                if (start == null) { System.out.println("Start is Null"); }
+
+                City dest = new City(railData[1]);
+                dest = graph.getCity(dest, graph);
+
+                if (dest == null) { System.out.println("Destination is Null"); }
+
+                int weight = Integer.parseInt(railData[2].trim()); 
+
+                graph.insertEdge(start, dest, weight);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return graph;
+    }
+
+    public static TrainSelector<City> collectCities(TrainSelector<City> graph) {
+        String file_path = "../data/italian_cities.csv";
+        String line = "";
+
+        try (BufferedReader br = new BufferedReader(new FileReader(file_path))) {
+            br.readLine();
+            while ((line = br.readLine()) != null) {
+                String[] cityData = line.split(",");
+
+                String name = cityData[0];
+                String region = cityData[6];
+                int pop = Integer.parseInt(cityData[7].trim()); 
+
+                City city = new City(name, region, pop);
+                graph.insertVertex(city);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return graph;
+    }
+
     public TrainSelector<City> graphSetup() {
         TrainSelector<City> cities = new TrainSelector<>();
+        cities = collectCities(cities);
+        // System.out.println("Cities Inserted: " + cities.getVertexCount());
 
-
-        // Creates City objects for each City
-        City ancona = new City("Ancona", "Marche", 473865);
-        City bari = new City("Bari", "Puglia", 1247303);
-        City bergamo = new City("Bergamo", "Lombardia", 1103768);
-        City bologna = new City("Bologna", "Emilia-Romagna", 1011658);
-        City bolzano = new City("Bolzano", "Trentino-Alto Adige", 533267);
-
-        City caserta = new City("Caserta", "Compania", 904921);
-        City catanzaro = new City("Catanzaro", "Calabria", 359841);
-        City cortina = new City("Cortina d'Ampezzo", "Veneto", 5546);
-        City cremona = new City("Cremona", "Lombardia", 357623);
-        City fiumicino = new City("Fiumicino", "Lazio", 81426);
-
-        City florence = new City("Florence", "Tuscany", 984991);
-        City foggia = new City("Foggia", "Puglia", 626072);
-        City genoa = new City("Genoa", "Liguria", 855834);
-        City laspezia = new City("La Spezia", "Liguria", 219330);
-        City lameziaterme = new City("Lamezia Terme", "Calabria", 67026);
-
-        City lecce = new City("Lecce", "Puglia", 802018);
-        City matera = new City("Matera", "Basilicata", 200101);
-        City milan = new City("Milan", "Lombardia", 3219391);
-        City naples = new City("Naples", "Compania", 3054956);
-        City padova = new City("Padova", "Veneto", 928374);
-
-        City perugia = new City("Perugia", "Umbria", 655844);
-        City pescara = new City("Pescara", "Abruzzo", 314661);
-        City piacenza = new City("Piacenza", "Emilia-Romagna", 284616);
-        City pisa = new City("Pisa", "Tuscany", 416323);
-        City potenza = new City("Potenza", "Basilicata", 377935);
-
-        City ravenna = new City("Ravenna", "Emilia-Romagna", 155751);
-        City reggiodicalabria = new City("Reggio di Calabria", "Calabria", 550967);
-        City rome = new City("Rome", "Lazio", 4216553);
-        City salerno = new City("Salerno", "Compania", 134840);
-        City siena = new City("Siena", "Tuscany", 266621);
-
-        City taranto = new City("Taranto", "Puglia", 584649);
-        City trieste = new City("Trieste", "Friuli-Venezia Giulia", 232601);
-        City turin = new City("Turin", "Piemonte", 2247780);
-        City venice = new City("Venice", "Veneto", 846962);
-        City verona = new City("Verona", "Veneto", 923950);
-
-        // Inserts Cities into graph
-        cities.insertVertex(ancona);
-        cities.insertVertex(bari);
-        cities.insertVertex(bergamo);
-        cities.insertVertex(bologna);
-        cities.insertVertex(bolzano);
-
-        cities.insertVertex(caserta);
-        cities.insertVertex(catanzaro);
-        cities.insertVertex(cortina);
-        cities.insertVertex(cremona);
-        cities.insertVertex(fiumicino);
-
-        cities.insertVertex(florence);
-        cities.insertVertex(foggia);
-        cities.insertVertex(genoa);
-        cities.insertVertex(laspezia);
-        cities.insertVertex(lameziaterme);
-
-        cities.insertVertex(lecce);
-        cities.insertVertex(matera);
-        cities.insertVertex(milan);
-        cities.insertVertex(naples);
-        cities.insertVertex(padova);
-
-        cities.insertVertex(perugia);
-        cities.insertVertex(pescara);
-        cities.insertVertex(piacenza);
-        cities.insertVertex(pisa);
-        cities.insertVertex(potenza);
-
-        cities.insertVertex(ravenna);
-        cities.insertVertex(reggiodicalabria);
-        cities.insertVertex(rome);
-        cities.insertVertex(salerno);
-        cities.insertVertex(siena);
-
-        cities.insertVertex(taranto);
-        cities.insertVertex(trieste);
-        cities.insertVertex(turin);
-        cities.insertVertex(venice);
-        cities.insertVertex(verona);
-
-
-        cities.insertEdge(turin, milan, 141);
-        cities.insertEdge(turin, genoa, 163);
-        cities.insertEdge(milan, genoa, 141);
-        cities.insertEdge(milan, piacenza, 70);
-        cities.insertEdge(milan, cremona, 87);
-
-        cities.insertEdge(cremona, bergamo, 99);
-        cities.insertEdge(cremona, verona, 115);
-        cities.insertEdge(verona, bolzano, 146);
-        cities.insertEdge(verona, padova, 82);
-        cities.insertEdge(verona, bologna, 115);
-
-        cities.insertEdge(padova, bologna, 123);
-        cities.insertEdge(padova, venice, 37);
-        cities.insertEdge(venice, cortina, 168);
-        cities.insertEdge(venice, trieste, 153);
-        cities.insertEdge(piacenza, bologna, 147);
-
-        cities.insertEdge(genoa, laspezia, 84);
-        cities.insertEdge(bologna, florence, 91);
-        cities.insertEdge(bologna, ravenna, 82);
-        cities.insertEdge(laspezia, pisa, 74);
-        cities.insertEdge(florence, pisa, 78);
-
-        cities.insertEdge(florence, siena, 93);
-        cities.insertEdge(florence, rome, 261);
-        cities.insertEdge(florence, perugia, 151);
-        cities.insertEdge(ravenna, ancona, 143);
-        cities.insertEdge(ancona, rome, 277);
-
-        cities.insertEdge(rome, fiumicino, 32);
-        cities.insertEdge(ancona, pescara, 146);
-        cities.insertEdge(rome, caserta, 198);
-        cities.insertEdge(pescara, foggia, 173);
-        cities.insertEdge(caserta, foggia, 158);
-
-        cities.insertEdge(caserta, naples, 34);
-        cities.insertEdge(naples, salerno, 51);
-        cities.insertEdge(foggia, bari, 122);
-        cities.insertEdge(bari, lecce, 149);
-        cities.insertEdge(salerno, potenza, 111);
-
-        cities.insertEdge(potenza, matera, 104);
-        cities.insertEdge(potenza, taranto, 151);
-        cities.insertEdge(salerno, lameziaterme, 282);
-        cities.insertEdge(catanzaro, lameziaterme, 27);
-        cities.insertEdge(reggiodicalabria, lameziaterme, 129);
+        cities = collectRailroads(cities);
+        // System.out.println("Railroads Inserted: " + cities.getEdgeCount());
 
         return cities;
     }

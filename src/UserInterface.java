@@ -4,11 +4,11 @@ public class UserInterface {
 
     private static final String[] CITIES = {
             "Ancona", "Bari", "Bergamo", "Balogna", "Bolzano",
-            "Caserta", "Catanzaro", "Cortina d'Ampezzo",  "Florence", "Fiumicino",
-            "Foggia", "Genoa", "La Spezia", "Lamezia Terme", "Lecce", 
-            "Matera", "Milan", "Naples", "Padova", "Perugia",
-            "Pescara", "Piacenza", "Pisa", "Potenza", "Ravenna", 
-            "Reggio di Calabria", "Rome", "Salerno", "San Giorgio a Cremano", "Siena",
+            "Caserta", "Catanzaro", "Cortina d'Ampezzo", "Cremona", "Fiumicino",  
+            "Florence", "Foggia", "Genoa", "La Spezia", "Lamezia Terme",  
+            "Lecce", "Matera", "Milan", "Naples", "Padova", 
+            "Perugia", "Pescara", "Piacenza", "Pisa", "Potenza",  
+            "Ravenna", "Reggio di Calabria", "Rome", "Salerno", "Siena",
             "Taranto", "Trieste", "Turin", "Venice", "Verona"
 
     };
@@ -31,7 +31,7 @@ public class UserInterface {
         
 
         City startCity = new City(city_name);
-        City s = graph.geCity(startCity, graph);
+        City s = graph.getCity(startCity, graph);
         return s;
     }
 
@@ -75,6 +75,8 @@ public class UserInterface {
         }
         catch (Exception e) {
             System.out.println("Graph unsuccessfully made");
+            System.out.println(e.getMessage());
+            System.exit(1); 
         }
 
         System.out.println();
@@ -111,6 +113,8 @@ public class UserInterface {
             System.out.println(graph.getShortestPathString(start, dest));
             System.out.println();
             System.out.println("Total Distance: " + cost);
+            System.out.println();
+            System.out.println();
         }
     }
 }
