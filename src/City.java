@@ -4,18 +4,7 @@ public class City implements Comparable<City> {
     private String Name;    // Name of City
     private String Region;    // Region that City resides
     private int Pop;    // Population of City
-    //private static int idGenerator = 0;
-    //public final int ID;
 
-    // private static final String[] CITIES = {
-    //     "Ancona",    "Bologna",           "Bari",                "Bergamo",   "Bolzano",
-    //     "Caserta",   "Catanzaro",          "Cortina d'Ampezzo",  "Cremano",   "Florence",
-    //     "Fiumicino", "Foggia",             "Genova",             "La Spezia", "Lamezia Terme",
-    //     "Lecce",     "Matera",             "Milan",              "Naples",    "Padova",
-    //     "Perugia",   "Pescara",            "Piacanza",           "Pisa",      "Potenza",
-    //     "Ravenna",   "Reggio di Calabria", "Rome",               "Salerno",   "Siena",
-    //     "Taranto",   "Turin",              "Trieste",            "Venice",    "Verona"
-    // };
 
     /**
      * Creates a new City with the given name, region, and population

@@ -7,19 +7,19 @@ to find the shortest path between 2 user picked cities via rail network. The ver
 storage. City and Path objects are used to hold internal City info and path data sequence information for ease of access. 
 
 #### List of Cities in Network:
-|                    |            |                    |                         |                |
-| ------------------ | ---------- | -------------------| ----------------------- | -------------- |
-| Ancona             | Bari       | Bergamo            | Bologna                 | Bolzano        |
-| Caserta            | Catanzaro  | Cortina d'Ampezzo  | Fiumicino               | Florence       |
-| Foggia             | Genoa      | La Spezia          | Lamezia Terme           | Lecce          |
-| Matera             | Milan      | Naples             | Padova                  | Perugia        |
-| Pescara            | Piacenza   | Pisa               | Potenza                 | Ravenna        |
-| Reggio di Calabria | Rome       | Solerno            | San Giorgio a Cremano   |  Siena         |
-| Taranto            | Trieste    | Turin              | Venice                  | Verona         |
+|              |                     |                    |            |                |
+| ------------ | ------------------- | -------------------| ---------- | -------------- |
+| Ancona       | Bari                | Bergamo            | Bologna    | Bolzano        |
+| Caserta      | Catanzaro           | Cortina d'Ampezzo  | Cremona    | Fiumicino      | 
+| Florence     | Foggia              | Genoa              | La Spezia  | Lamezia Terme  | 
+| Lecce        | Matera              | Milan              | Naples     | Padova         |
+| Perugia      | Pescara             | Piacenza           | Pisa       | Potenza        | 
+| Ravenna      | Reggio di Calabria  | Rome               | Solerno    |  Siena         |
+| Taranto      | Trieste             | Turin              | Venice     | Verona         |
 
 
 #### Planning out Network
-![Network Outline](./images/italy_train_network_outline.png) 
+![Network Outline](./images/network_outline.png) 
 
 
 #### Maps of Italy

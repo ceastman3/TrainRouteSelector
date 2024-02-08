@@ -440,31 +440,31 @@ public class TrainSelector<T> implements GraphADT<T> {
         City caserta = new City("Caserta", "Compania", 904921);
         City catanzaro = new City("Catanzaro", "Calabria", 359841);
         City cortina = new City("Cortina d'Ampezzo", "Veneto", 5546);
-        City florence = new City("Florence", "Tuscany", 984991);
+        City cremona = new City("Cremona", "Lombardia", 357623);
         City fiumicino = new City("Fiumicino", "Lazio", 81426);
 
+        City florence = new City("Florence", "Tuscany", 984991);
         City foggia = new City("Foggia", "Puglia", 626072);
         City genoa = new City("Genoa", "Liguria", 855834);
         City laspezia = new City("La Spezia", "Liguria", 219330);
         City lameziaterme = new City("Lamezia Terme", "Calabria", 67026);
-        City lecce = new City("Lecce", "Puglia", 802018);
 
+        City lecce = new City("Lecce", "Puglia", 802018);
         City matera = new City("Matera", "Basilicata", 200101);
         City milan = new City("Milan", "Lombardia", 3219391);
         City naples = new City("Naples", "Compania", 3054956);
         City padova = new City("Padova", "Veneto", 928374);
-        City perugia = new City("Perugia", "Umbria", 655844);
 
+        City perugia = new City("Perugia", "Umbria", 655844);
         City pescara = new City("Pescara", "Abruzzo", 314661);
         City piacenza = new City("Piacenza", "Emilia-Romagna", 284616);
         City pisa = new City("Pisa", "Tuscany", 416323);
         City potenza = new City("Potenza", "Basilicata", 377935);
-        City ravenna = new City("Ravenna", "Emilia-Romagna", 155751);
 
+        City ravenna = new City("Ravenna", "Emilia-Romagna", 155751);
         City reggiodicalabria = new City("Reggio di Calabria", "Calabria", 550967);
         City rome = new City("Rome", "Lazio", 4216553);
         City salerno = new City("Salerno", "Compania", 134840);
-        City cremona = new City("San Giorgio a Cremona", "Lombardia", 357623);
         City siena = new City("Siena", "Tuscany", 266621);
 
         City taranto = new City("Taranto", "Puglia", 584649);
@@ -483,31 +483,31 @@ public class TrainSelector<T> implements GraphADT<T> {
         cities.insertVertex(caserta);
         cities.insertVertex(catanzaro);
         cities.insertVertex(cortina);
+        cities.insertVertex(cremona);
         cities.insertVertex(fiumicino);
-        cities.insertVertex(florence);
 
+        cities.insertVertex(florence);
         cities.insertVertex(foggia);
         cities.insertVertex(genoa);
         cities.insertVertex(laspezia);
         cities.insertVertex(lameziaterme);
-        cities.insertVertex(lecce);
 
+        cities.insertVertex(lecce);
         cities.insertVertex(matera);
         cities.insertVertex(milan);
         cities.insertVertex(naples);
         cities.insertVertex(padova);
-        cities.insertVertex(perugia);
 
+        cities.insertVertex(perugia);
         cities.insertVertex(pescara);
         cities.insertVertex(piacenza);
         cities.insertVertex(pisa);
         cities.insertVertex(potenza);
-        cities.insertVertex(ravenna);
 
+        cities.insertVertex(ravenna);
         cities.insertVertex(reggiodicalabria);
         cities.insertVertex(rome);
         cities.insertVertex(salerno);
-        cities.insertVertex(cremona);
         cities.insertVertex(siena);
 
         cities.insertVertex(taranto);
