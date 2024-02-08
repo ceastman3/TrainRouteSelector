@@ -21,7 +21,7 @@ storage. City and Path objects are used to hold internal City info and path data
 #### Map of Cities
 ![Network Outline](./images/italian_cities.png) 
 
-#### Planning out Network
+#### Railroad Network
 ![Network Outline](./images/network_outline.png) 
 
 #### Italian Regions
